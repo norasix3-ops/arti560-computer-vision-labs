@@ -86,9 +86,8 @@ h, w, _ = frame.shape
 #out = cv2.VideoWriter('./' + file_name + '_yolov7', 
 #                       cv2.VideoWriter_fourcc(*'mp4v'), 
 #                       fps, (w, h))
-
-out = cv2.VideoWriter(f"{save_name}_yolo7.avi",cv2.VideoWriter_fourcc('M','J','P','G'), 10, w,h)
-
+save_name = "yolov7_pose_output"
+out = cv2.VideoWriter(f"{save_name}_yolo7.avi", cv2.VideoWriter_fourcc('M','J','P','G'), 10, (w, h))
 #-------------------------------------------------------------------------------#
 
 

@@ -1,0 +1,28 @@
+import cv2
+import torch
+
+# Load YOLOv7 pose model
+model = torch.hub.load('WongKinYiu/yolov7', 'custom', 'yolov7-w6-pose.pt')
+
+# Set your video path here
+video_path = "C:/Users/noraa/Documents/GitHub/arti560-computer-vision-labs/lab08-pose-estimation/media/crowd.mp4"
+
+cap = cv2.VideoCapture(video_path)
+
+while cap.isOpened():
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    results = model(frame)
+
+    # Render results on frame
+    annotated_frame = results.render()[0]
+
+    cv2.imshow("YOLOv7 Pose", annotated_frame)
+
+    if cv2.waitKey(1) & 0xFF == 27:
+        break
+
+cap.release()
+cv2.destroyAllWindows()
